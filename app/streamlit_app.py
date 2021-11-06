@@ -37,7 +37,10 @@ option = st.selectbox(
         "English -> German",
     ],
 )
+
+import streamlit as st
 from transformers import pipeline
+
 
 if option == "Wydźwięk emocjonalny tekstu (eng)":
     text = st.text_area(label="Wpisz tekst")
