@@ -26,7 +26,7 @@ st.spinner()
 with st.spinner(text='Proszę czekać...'):
 # możemy dzięki temu "ukryć" późniejsze ładowanie aplikacji
 
-    st.image("..\\assets\\logo.jpg")
+    st.image("https://github.com/alwaysbfrank/suml-germanizer/raw/d182ca100b49722e44934452429c11a3ba75d499/assets/logo.jpg")
     st.title('Germanizer')
 
     st.header('Instrukcja')
@@ -62,10 +62,3 @@ with st.spinner(text='Proszę czekać...'):
 
     st.subheader('Autor')
     st.text('Franek Matera s16289')
-    #st.write('Wykorzystaj Huggin Face do stworzenia swojej własnej aplikacji tłumaczącej tekst z języka angielskiego na język niemiecki. Zmodyfikuj powyższy kod dodając do niego kolejną opcję, tj. tłumaczenie tekstu. Informacje potrzebne do zmodyfikowania kodu znajdziesz na stronie Huggin Face - https://huggingface.co/transformers/usage.html')
-    #st.write('🐞 Dodaj właściwy tytuł do swojej aplikacji, może jakieś grafiki?')
-    #st.write('🐞 Dodaj krótką instrukcję i napisz do czego służy aplikacja')
-    st.write('🐞 Wpłyń na user experience, dodaj informacje o ładowaniu, sukcesie, błędzie, itd.')
-    st.write('🐞 Na końcu umieść swój numer indeksu')
-    st.write('🐞 Stwórz nowe repozytorium na GitHub, dodaj do niego swoją aplikację, plik z wymaganiami (requirements.txt)')
-    st.write('🐞 Udostępnij stworzoną przez siebie aplikację (https://share.streamlit.io) a link prześlij do prowadzącego')
