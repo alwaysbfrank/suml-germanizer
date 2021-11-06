@@ -4,7 +4,7 @@ import time
 import matplotlib as plt
 import os
 
-from transformers import pipeline
+
 # zaczynamy od zaimportowania bibliotek
 
 # st.success('Gratulacje! Z powodzeniem uruchomiłeś aplikację')
@@ -37,12 +37,12 @@ option = st.selectbox(
         "English -> German",
     ],
 )
+from transformers import pipeline
 
-sentimentClassifier = pipeline("sentiment-analysis")
-germanClassifier = pipeline("translation_en_to_de")
 if option == "Wydźwięk emocjonalny tekstu (eng)":
     text = st.text_area(label="Wpisz tekst")
     if text:
+        sentimentClassifier = pipeline("sentiment-analysis")
         answer = sentimentClassifier(text)
         st.write(answer)
 
@@ -50,6 +50,7 @@ if option == "English -> German":
     text = st.text_area(label="Wpisz tekst")
     if text:
         with st.spinner(text="Translating"):
+            germanClassifier = pipeline("translation_en_to_de")
             payload = germanClassifier(text)
             answer = payload[0]["translation_text"]
             if answer:
