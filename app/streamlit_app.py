@@ -22,43 +22,41 @@ from transformers import pipeline
 # st.info('Informacja...')
 # st.success('Udało się!')
 
-st.spinner()
-with st.spinner(text='Proszę czekać...'):
 # możemy dzięki temu "ukryć" późniejsze ładowanie aplikacji
 
-    st.image("https://github.com/alwaysbfrank/suml-germanizer/raw/d182ca100b49722e44934452429c11a3ba75d499/assets/logo.jpg")
-    st.title('Germanizer')
+st.image("https://github.com/alwaysbfrank/suml-germanizer/raw/d182ca100b49722e44934452429c11a3ba75d499/assets/logo.jpg")
+st.title('Germanizer')
 
-    st.header('Instrukcja')
-    st.text('Wybierz silnik, wpisz tekst po angielsku i naciśnij ctrl + enter.')
+st.header('Instrukcja')
+st.text('Wybierz silnik, wpisz tekst po angielsku i naciśnij ctrl + enter.')
 
-    option = st.selectbox(
-        "Opcje",
-        [
-            "Wydźwięk emocjonalny tekstu (eng)",
-            "English -> German",
-        ],
-    )
+option = st.selectbox(
+    "Opcje",
+    [
+        "Wydźwięk emocjonalny tekstu (eng)",
+        "English -> German",
+    ],
+)
 
-    sentimentClassifier = pipeline("sentiment-analysis")
-    germanClassifier = pipeline("translation_en_to_de")
-    if option == "Wydźwięk emocjonalny tekstu (eng)":
-        text = st.text_area(label="Wpisz tekst")
-        if text:
-            answer = sentimentClassifier(text)
-            st.write(answer)
+sentimentClassifier = pipeline("sentiment-analysis")
+germanClassifier = pipeline("translation_en_to_de")
+if option == "Wydźwięk emocjonalny tekstu (eng)":
+    text = st.text_area(label="Wpisz tekst")
+    if text:
+        answer = sentimentClassifier(text)
+        st.write(answer)
 
-    if option == "English -> German":
-        text = st.text_area(label="Wpisz tekst")
-        if text:
-            with st.spinner(text="Translating"):
-                payload = germanClassifier(text)
-                answer = payload[0]["translation_text"]
-                if answer:
-                    st.success('Translation done')
-                    st.write(answer)
-                else:
-                    st.error('Error while translating')
+if option == "English -> German":
+    text = st.text_area(label="Wpisz tekst")
+    if text:
+        with st.spinner(text="Translating"):
+            payload = germanClassifier(text)
+            answer = payload[0]["translation_text"]
+            if answer:
+                st.success('Translation done')
+                st.write(answer)
+            else:
+                st.error('Error while translating')
 
-    st.subheader('Autor')
-    st.text('Franek Matera s16289')
+st.subheader('Autor')
+st.text('Franek Matera s16289')
