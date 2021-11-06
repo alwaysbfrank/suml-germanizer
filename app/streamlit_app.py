@@ -30,6 +30,9 @@ st.title('Germanizer')
 st.header('Instrukcja')
 st.text('Wybierz silnik, wpisz tekst po angielsku i naciśnij ctrl + enter.')
 
+import streamlit as st
+from transformers import pipeline
+
 option = st.selectbox(
     "Opcje",
     [
@@ -37,10 +40,6 @@ option = st.selectbox(
         "English -> German",
     ],
 )
-
-import streamlit as st
-from transformers import pipeline
-
 
 if option == "Wydźwięk emocjonalny tekstu (eng)":
     text = st.text_area(label="Wpisz tekst")
