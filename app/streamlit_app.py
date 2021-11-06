@@ -40,19 +40,19 @@ with st.spinner(text='Proszę czekać...'):
         ],
     )
 
+    sentimentClassifier = pipeline("sentiment-analysis")
+    germanClassifier = pipeline("translation_en_to_de")
     if option == "Wydźwięk emocjonalny tekstu (eng)":
         text = st.text_area(label="Wpisz tekst")
         if text:
-            classifier = pipeline("sentiment-analysis")
-            answer = classifier(text)
+            answer = sentimentClassifier(text)
             st.write(answer)
 
     if option == "English -> German":
         text = st.text_area(label="Wpisz tekst")
         if text:
             with st.spinner(text="Translating"):
-                classifier = pipeline("translation_en_to_de")
-                payload = classifier(text)
+                payload = germanClassifier(text)
                 answer = payload[0]["translation_text"]
                 if answer:
                     st.success('Translation done')
